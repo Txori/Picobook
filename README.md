@@ -14,4 +14,4 @@ Simply use [w64devkit by skeeto](https://github.com/skeeto/w64devkit): ```g++ -O
 
 **How to**
 
-Simply put picobookx.ex in your picotron folder, next to picotron.exe, and launch it!
+Put picobookx.exe in your picotron folder, next to picotron.exe, and launch it!
