@@ -9,40 +9,52 @@
 
 #include <iostream>
 #include <windows.h>
+#include <winuser.h>
 
-// Function to change the screen resolution
-bool ChangeResolution(int width, int height) {
-    DEVMODE devMode;
-    devMode.dmSize = sizeof(DEVMODE);
-    devMode.dmPelsWidth = width;
-    devMode.dmPelsHeight = height;
-    devMode.dmFields = DM_PELSWIDTH | DM_PELSHEIGHT;
+// Screen resolution of the Chuwi Minibook X
+constexpr int SCREEN_WIDTH = 1440;
+constexpr int SCREEN_HEIGHT = 900;
 
-    if (ChangeDisplaySettings(&devMode, CDS_FULLSCREEN) != DISP_CHANGE_SUCCESSFUL) {
-        std::cerr << "Failed to change screen resolution." << std::endl;
-        return false;
-    }
+// Screen resolution of the Picotron 480x270 (x3)
+constexpr int PICOTRON_WIDTH = 1440;
+constexpr int PICOTRON_HEIGHT = 810;
 
-    return true;
-}
-
-// Function to restore the original screen resolution
-void RestoreResolution() {
-    ChangeDisplaySettings(NULL, 0);
-}
+// Function prototypes
+bool ChangeResolution(int width, int height);
+void RestoreResolution();
 
 int main() {
-    // Change the screen resolution to 1440x900
-    // Picotron resolution is 480x270, x3 = 1440x810
-    if (!ChangeResolution(1440, 900)) {
+    // Change the screen resolution
+    if (!ChangeResolution(SCREEN_WIDTH, SCREEN_HEIGHT)) {
+        std::cerr << "Failed to change screen resolution." << std::endl;
         return 1; // Exit if resolution change failed
     }
 
     // Run the program
-    system("picotron.exe");
+    if (system("picotron.exe") != 0) {
+        std::cerr << "Failed to execute picotron.exe." << std::endl;
+        RestoreResolution(); // Restore resolution before exiting
+        return 1;
+    }
 
     // Restore the original screen resolution
     RestoreResolution();
 
     return 0;
+}
+
+// Function to change the screen resolution
+bool ChangeResolution(int width, int height) {
+    DEVMODE devMode = {};
+    devMode.dmSize = sizeof(DEVMODE);
+    devMode.dmPelsWidth = width;
+    devMode.dmPelsHeight = height;
+    devMode.dmFields = DM_PELSWIDTH | DM_PELSHEIGHT;
+
+    return ChangeDisplaySettings(&devMode, CDS_FULLSCREEN) == DISP_CHANGE_SUCCESSFUL;
+}
+
+// Function to restore the original screen resolution
+void RestoreResolution() {
+    ChangeDisplaySettings(NULL, 0);
 }
