@@ -4,7 +4,7 @@
     Chuwi Minibook X, then switch back to the original resolution upon exit
 
     Compile using w64devkit (https://github.com/skeeto/w64devkit):
-    g++ -O3 -std=c++17 -o picobookx.exe picobookx.cpp -lstdc++fs
+    g++ -O3 -std=c++17 -o picobook.exe picobook.cpp -lstdc++fs
 */
 
 #include <iostream>
