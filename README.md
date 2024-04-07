@@ -1,4 +1,4 @@
-# Picobook-X
+# Picobook
 Launch Picotron by Lexaloffle at the correct screen resolution on the Chuwi Minibook X, then switch back to the original resolution upon exit.
 
 
@@ -14,4 +14,4 @@ Simply use [w64devkit by skeeto](https://github.com/skeeto/w64devkit): ```g++ -O
 
 **How to**
 
-Put picobookx.exe in your picotron folder, next to picotron.exe, and launch it!
+Put picobook.exe in your picotron folder, next to picotron.exe, and launch it!
