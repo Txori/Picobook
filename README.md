@@ -9,7 +9,7 @@ Launch Picotron by Lexaloffle at the correct screen resolution on the Chuwi Mini
 
 **Compilation**
 
-Simply use [w64devkit by skeeto](https://github.com/skeeto/w64devkit): ```g++ -O3 -std=c++17 -o picobookx.exe picobookx.cpp -lstdc++fs```
+Simply use [w64devkit by skeeto](https://github.com/skeeto/w64devkit): ```g++ -O3 -std=c++17 -o picobook.exe picobook.cpp -lstdc++fs```
 
 
 **How to**
