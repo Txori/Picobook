@@ -41,13 +41,6 @@ int main() {
         return 1; // Exit if resolution change failed
     }
 
-    // Calculate the rectangle to clip the mouse cursor
-    RECT clipRect;
-    clipRect.left = 0;
-    clipRect.top = (SCREEN_HEIGHT - PICOTRON_HEIGHT) / 2; // Adjust to center vertically
-    clipRect.right = PICOTRON_WIDTH;
-    clipRect.bottom = clipRect.top + PICOTRON_HEIGHT;
-
     // Run the Picotron application
     if (!RunApplication(L".\\picotron.exe")) {
         std::cerr << "Failed to execute picotron.exe." << std::endl;
