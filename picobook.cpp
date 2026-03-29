@@ -1,5 +1,5 @@
 /*
-    PicobookX, by Etienne Bégué - www.txori.com
+    Picobook, by Etienne Bégué - www.txori.com
     Launch Picotron by Lexaloffle at the correct screen resolution on the
     Chuwi Minibook X, then switch back to the original resolution upon exit
 
